@@ -1,5 +1,4 @@
-# Implementing Multiple Layer Neural Network from Scratch
-This post is inspired by <http://www.wildml.com/2015/09/implementing-a-neural-network-from-scratch>.
+# Implementing Multiple Layer Neural Network with Python
 
 In this post, we will implement a multiple layer neural network from scratch. You can regard the number of layers and dimension of each layer as parameter. For example, `[2, 3, 2]` represents inputs with 2 dimension, one hidden layer with 3 dimension and output with 2 dimension (binary classification) (using softmax as output).
 
