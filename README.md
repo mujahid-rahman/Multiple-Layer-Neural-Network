@@ -1,11 +1,6 @@
 # Implementing Multiple Layer Neural Network with Python
 
-In this post, we will implement a multiple layer neural network from scratch. You can regard the number of layers and dimension of each layer as parameter. For example, `[2, 3, 2]` represents inputs with 2 dimension, one hidden layer with 3 dimension and output with 2 dimension (binary classification) (using softmax as output).
-
-We won’t derive all the math that’s required, but I will try to give an intuitive explanation of what we are doing. I will also point to resources for you read up on the details.
-
-## Generating a dataset
-Let’s start by generating a dataset we can play with. Fortunately, [scikit-learn](http://scikit-learn.org/) has some useful dataset generators, so we don’t need to write the code ourselves. We will go with the [make_moons](http://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_moons.html) function.
+In this project, a multiple layer neural network is implemented with Python. You can regard the number of layers and dimension of each layer as parameter. For example, `[2, 3, 2]` represents inputs with 2 dimension, one hidden layer with 3 dimension and output with 2 dimension (binary classification) (using softmax as output).
 
 ```python
 # Generate a dataset and plot it
@@ -15,15 +10,14 @@ plt.scatter(X[:,0], X[:,1], s=40, c=y, cmap=plt.cm.Spectral)
 ```
 ![](https://github.com/pangolulu/neural-network-from-scratch/raw/master/figures/nn-from-scratch-dataset.png)
 
-The dataset we generated has two classes, plotted as red and blue points. Our goal is to train a Machine Learning classifier that predicts the correct class given the x- and y- coordinates. Note that the data is not linearly separable, we can’t draw a straight line that separates the two classes. This means that linear classifiers, such as Logistic Regression, won’t be able to fit the data unless you hand-engineer non-linear features (such as polynomials) that work well for the given dataset.
+The dataset in this project have been generated has two classes, plotted as red and blue points. Our goal is to train a Machine Learning classifier that predicts the correct class given the x- and y- coordinates. Note that the data is not linearly separable, we can’t draw a straight line that separates the two classes. This means that linear classifiers, such as Logistic Regression, won’t be able to fit the data unless you hand-engineer non-linear features (such as polynomials) that work well for the given dataset.
 
 In fact, that’s one of the major advantages of Neural Networks. You don’t need to worry about feature engineering. The hidden layer of a neural network will learn features for you.
 
 ## Neural Network
 ### Neural Network Architecture
-You can read this tutorial (<http://cs231n.github.io/neural-networks-1/>) to learn the basic concepts of neural network. Like activation functions, feed-forward computation and so on.
 
-Because we want our network to output probabilities the activation function for the output layer will be the [softmax](https://en.wikipedia.org/wiki/Softmax_function), which is simply a way to convert raw scores to probabilities. If you’re familiar with the logistic function you can think of softmax as its generalization to multiple classes.
+In this project I want my network to output probabilities the activation function for the output layer will be the [softmax](https://en.wikipedia.org/wiki/Softmax_function), which is simply a way to convert raw scores to probabilities. If you’re familiar with the logistic function you can think of softmax as its generalization to multiple classes.
 
 When you choose softmax as output, you can use [cross-entropy loss](https://en.wikipedia.org/wiki/Cross_entropy#Cross-entropy_error_function_and_logistic_regression) (also known as negative log likelihood) as loss function. More about Loss Function can be find in <http://cs231n.github.io/neural-networks-2/#losses>.
 ### Learning the Parameters
